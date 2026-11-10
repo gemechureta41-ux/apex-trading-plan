@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY TRADING PLAN - Institutional SMC & Price Action Dashboard</title>
+    <title>MY TRADING PLAN - Complete Institutional Forex Roadmap</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -19,7 +19,7 @@
             position: relative; 
         }
         
-        /* WARM AMBER DESK LAMP & BULB ACCENT LIGHTING EFFECT (24/7 FLOW) */
+        /* WARM AMBER & ELECTRIC LIGHTING BEAMS (24/7 CONTINUOUS) */
         .ambient-glow {
             position: fixed;
             top: 0;
@@ -39,7 +39,6 @@
         }
         .light-lamp-1 { width: 550px; height: 550px; top: -15%; left: -10%; animation-duration: 10s; }
         .light-lamp-2 { width: 650px; height: 650px; bottom: -20%; right: -10%; background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(180, 83, 9, 0.1) 40%, transparent 75%); animation-duration: 14s; }
-        .light-lamp-3 { width: 450px; height: 450px; top: 35%; left: 35%; background: radial-gradient(circle, rgba(252, 211, 77, 0.15) 0%, transparent 65%); animation-duration: 12s; }
 
         @keyframes pulseLamp {
             0% { transform: translate(0px, 0px) scale(1); opacity: 0.8; }
@@ -47,7 +46,7 @@
             100% { transform: translate(-40px, 30px) scale(0.92); opacity: 0.7; }
         }
 
-        /* FLOATING FOREX ELEMENTS ($ / CANDLESTICKS / STUDIO ICONS) */
+        /* FLOATING FOREX ELEMENTS ($ / BULB / CANDLESTICK) */
         .forex-floating-element {
             position: absolute;
             color: rgba(251, 191, 36, 0.35);
@@ -64,12 +63,10 @@
             100% { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
         }
 
-        /* GLASS CARD STYLING WITH WARM GOLD BORDER GLOW */
-        .glass-card { background: rgba(12, 17, 28, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(245, 158, 11, 0.15); position: relative; z-index: 2; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+        .glass-card { background: rgba(12, 17, 28, 0.88); backdrop-filter: blur(20px); border: 1px solid rgba(245, 158, 11, 0.2); position: relative; z-index: 2; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
         .glass-input { background: rgba(5, 7, 12, 0.95); border: 1px solid rgba(255, 255, 255, 0.12); position: relative; z-index: 2; color: white; }
         .glass-input:focus { border-color: #f59e0b; outline: none; box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
         .glow-gold { box-shadow: 0 0 30px rgba(245, 158, 11, 0.22); }
-        .glow-red { box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); }
         .session-live { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.08); }
         .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(12, 17, 28, 0.4); opacity: 0.7; }
     </style>
@@ -80,23 +77,22 @@
     <div class="ambient-glow">
         <div class="light-beam light-lamp-1"></div>
         <div class="light-beam light-lamp-2"></div>
-        <div class="light-beam light-lamp-3"></div>
     </div>
 
-    <!-- DYNAMIC FLOATING FOREX ELEMENTS CONTAINER ($ / BULB / CANDLESTICK) -->
+    <!-- DYNAMIC FLOATING FOREX ELEMENTS CONTAINER -->
     <div id="floatingContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-1"></div>
 
     <!-- Header Banner -->
     <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-6 gap-4 glass-card p-6 rounded-2xl border-l-4 border-amber-500 glow-gold">
         <div class="flex items-center gap-4">
             <div class="bg-amber-500/20 text-amber-400 p-3.5 rounded-2xl text-2xl border border-amber-500/40 shadow-lg shadow-amber-500/20">
-                <i class="fa-solid fa-lightbulb animate-pulse text-yellow-300"></i>
+                <i class="fa-solid fa-list-check animate-pulse text-yellow-300"></i>
             </div>
             <div>
                 <h1 class="text-2xl md:text-3xl font-black tracking-wide text-white flex items-center gap-2">
-                    MY TRADING PLAN <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/30">INSTITUTIONAL WARM GLOW</span>
+                    MY TRADING PLAN <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/30">COMPLETE INSTITUTIONAL CHECKLIST</span>
                 </h1>
-                <p class="text-xs text-slate-400 mt-0.5">SMC + Price Action Institutional Dashboard | Apex Forex Strategy</p>
+                <p class="text-xs text-slate-400 mt-0.5">From Beginner to Elite Pro | SMC, ICT & Price Action Execution Masterclass</p>
             </div>
         </div>
         <div class="flex flex-wrap gap-2 text-xs">
@@ -106,71 +102,176 @@
             <span class="bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 text-amber-400 font-bold flex items-center gap-1.5">
                 <i class="fa-solid fa-crosshairs"></i> Target RR: 1:4
             </span>
-            <span class="bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 text-emerald-400 font-bold flex items-center gap-1.5">
-                <i class="fa-solid fa-layer-group"></i> HTF: Weekly / Daily / 4H
-            </span>
         </div>
     </header>
 
-    <!-- STRICT WARNING & NON-NEGOTIABLE RULES SECTION -->
-    <section class="max-w-7xl mx-auto mb-6">
-        <div class="glass-card p-5 rounded-2xl border-2 border-rose-500/60 bg-gradient-to-r from-rose-950/40 via-slate-900/80 to-slate-900/80 glow-red relative overflow-hidden">
-            <div class="absolute -right-8 -top-8 text-rose-500/10 text-9xl pointer-events-none">
-                <i class="fa-solid fa-triangle-exclamation"></i>
+    <!-- 12-STEP INSTITUTIONAL ROADMAP & CHECKLIST GRID (Inspired by App Checklist Format) -->
+    <section class="max-w-7xl mx-auto mb-8">
+        <div class="flex items-center justify-between mb-4 px-1">
+            <h2 class="text-sm font-black text-amber-400 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-check-to-slot"></i> Institutional Trading Plan & Checklist (12 Modules)
+            </h2>
+            <span class="text-[11px] text-slate-400">Complete all rules for A+ execution</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            
+            <!-- Module 1 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-amber-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-amber-500/20 text-amber-400 text-xs font-black px-2.5 py-1 rounded-lg">1. GET STARTED</span>
+                    <i class="fa-solid fa-flag text-amber-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Understand SMC Framework</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Master Market Structure</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Set up TradingView Chart</span></i></li>
+                </ul>
             </div>
-            <div class="flex items-center gap-3 mb-3 border-b border-rose-500/30 pb-3">
-                <span class="bg-rose-500/20 text-rose-400 p-2.5 rounded-xl text-lg animate-pulse border border-rose-500/40">
-                    <i class="fa-solid fa-radiation"></i>
-                </span>
-                <div>
-                    <h2 class="text-base font-black tracking-wider text-rose-400 uppercase flex items-center gap-2">
-                        STRICT WARNING & NON-NEGOTIABLE RULES
-                    </h2>
-                    <p class="text-[11px] text-slate-400">Violating any of these rules will result in instant account liquidation or heavy drawdowns. Discipline is mandatory.</p>
+
+            <!-- Module 2 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-emerald-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-emerald-500/20 text-emerald-400 text-xs font-black px-2.5 py-1 rounded-lg">2. HTF KEY LEVELS</span>
+                    <i class="fa-solid fa-chart-pie text-emerald-500 text-xs"></i>
                 </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Weekly Key S/R Levels</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Daily Order Blocks (OB)</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Major Liquidity Pools</span></i></li>
+                </ul>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs mt-4">
-                <div class="bg-slate-950/80 p-3 rounded-xl border border-rose-500/30 flex flex-col justify-between">
-                    <div class="flex items-center gap-2 text-rose-400 font-extrabold mb-1">
-                        <i class="fa-solid fa-ban"></i> RULE 1
-                    </div>
-                    <div class="text-white font-bold mb-1">STRICT 1% RISK / TRADE</div>
-                    <p class="text-[11px] text-slate-400">Strictly risk 1% per trade setup. Never exceed 1% risk per position.</p>
+            <!-- Module 3 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-blue-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-blue-500/20 text-blue-400 text-xs font-black px-2.5 py-1 rounded-lg">3. 4H BIAS & TREND</span>
+                    <i class="fa-solid fa-compass text-blue-500 text-xs"></i>
                 </div>
-
-                <div class="bg-slate-950/80 p-3 rounded-xl border border-amber-500/30 flex flex-col justify-between">
-                    <div class="flex items-center gap-2 text-amber-400 font-extrabold mb-1">
-                        <i class="fa-solid fa-bullseye"></i> RULE 2
-                    </div>
-                    <div class="text-white font-bold mb-1">MINIMUM 1:4 RR</div>
-                    <p class="text-[11px] text-slate-400">Do not enter setups below 1:4 RR. Low reward ratios destroy mathematical expectancy.</p>
-                </div>
-
-                <div class="bg-slate-950/80 p-3 rounded-xl border border-rose-500/30 flex flex-col justify-between">
-                    <div class="flex items-center gap-2 text-rose-400 font-extrabold mb-1">
-                        <i class="fa-solid fa-hand"></i> RULE 3
-                    </div>
-                    <div class="text-white font-bold mb-1">MAX 2 TRADES / DAY</div>
-                    <p class="text-[11px] text-slate-400">Strictly max 2 trades per day (1% risk each). Revenge trading is strictly forbidden.</p>
-                </div>
-
-                <div class="bg-slate-950/80 p-3 rounded-xl border border-cyan-500/30 flex flex-col justify-between">
-                    <div class="flex items-center gap-2 text-cyan-400 font-extrabold mb-1">
-                        <i class="fa-solid fa-clock"></i> RULE 4
-                    </div>
-                    <div class="text-white font-bold mb-1">LONDON & NY ONLY</div>
-                    <p class="text-[11px] text-slate-400">No trading during low-volume Asian hours or market closes. Trade high-volume sessions only.</p>
-                </div>
-
-                <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-between">
-                    <div class="flex items-center gap-2 text-emerald-400 font-extrabold mb-1">
-                        <i class="fa-solid fa-check-double"></i> RULE 5
-                    </div>
-                    <div class="text-white font-bold mb-1">15M CHoCH MANDATORY</div>
-                    <p class="text-[11px] text-slate-400">Never enter blind limit orders. Always wait for 15M Liquidity Sweep & CHoCH confirmation.</p>
-                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Confirm 4H Market Direction</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Identify BOS & CHoCH</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Align with Premium/Discount</span></i></li>
+                </ul>
             </div>
+
+            <!-- Module 4 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-purple-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-purple-500/20 text-purple-400 text-xs font-black px-2.5 py-1 rounded-lg">4. ACTIVE SESSIONS</span>
+                    <i class="fa-solid fa-clock text-purple-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>London Session (08:00 UTC)</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>New York Session (13:00 UTC)</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Avoid Asian Low Volume</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 5 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-rose-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-rose-500/20 text-rose-400 text-xs font-black px-2.5 py-1 rounded-lg">5. RISK MANAGEMENT</span>
+                    <i class="fa-solid fa-shield text-rose-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Strict 1% Risk Per Trade</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Maximum 2 Trades Per Day</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Zero Revenge Trading</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 6 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-amber-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-amber-500/20 text-amber-400 text-xs font-black px-2.5 py-1 rounded-lg">6. 15M ENTRY TRIGGER</span>
+                    <i class="fa-solid fa-crosshairs text-amber-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Wait for 15M Liquidity Sweep</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Confirm 15M CHoCH</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Mitigate at 15M FVG / OB</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 7 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-emerald-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-emerald-500/20 text-emerald-400 text-xs font-black px-2.5 py-1 rounded-lg">7. REWARD TARGET</span>
+                    <i class="fa-solid fa-bullseye text-emerald-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Minimum 1:4 RR Ratio</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Target Opposing Liquidity</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Partial Profits at 1:2</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 8 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-cyan-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-cyan-500/20 text-cyan-400 text-xs font-black px-2.5 py-1 rounded-lg">8. TRADE JOURNAL</span>
+                    <i class="fa-solid fa-pen-to-square text-cyan-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Log Symbol & Direction</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Upload TradingView Chart</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Track Win/Loss Ratio</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 9 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-indigo-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-indigo-500/20 text-indigo-400 text-xs font-black px-2.5 py-1 rounded-lg">9. PSYCHOLOGY</span>
+                    <i class="fa-solid fa-brain text-indigo-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Emotional Detachment</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Accept Losses Gracefully</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Maintain Elite Discipline</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 10 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-teal-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-teal-500/20 text-teal-400 text-xs font-black px-2.5 py-1 rounded-lg">10. BACKTESTING</span>
+                    <i class="fa-solid fa-history text-teal-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>1 Year Strategy Backtest</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Validate Win Probability</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Refine Entry Edge</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 11 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-orange-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-orange-500/20 text-orange-400 text-xs font-black px-2.5 py-1 rounded-lg">11. PROP FIRM RULES</span>
+                    <i class="fa-solid fa-building-columns text-orange-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Max Daily Drawdown 5%</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Max Total Drawdown 10%</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Consistency Rule Adherence</span></i></li>
+                </ul>
+            </div>
+
+            <!-- Module 12 -->
+            <div class="glass-card p-4 rounded-2xl border-t-4 border-rose-500">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="bg-rose-500/20 text-rose-400 text-xs font-black px-2.5 py-1 rounded-lg">12. 24/7 EXECUTION</span>
+                    <i class="fa-solid fa-infinity text-rose-500 text-xs"></i>
+                </div>
+                <ul class="space-y-1.5 text-xs text-slate-300">
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Continuous Bot Sync</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Live Session Countdown</span></i></li>
+                    <li class="flex items-center gap-2"><i class="fa-solid fa-circle-check text-emerald-400"><span>Master Trader Status</span></i></li>
+                </ul>
+            </div>
+
         </div>
     </section>
 
@@ -221,75 +322,9 @@
         </div>
     </section>
 
-    <!-- Main Workspace -->
+    <!-- Main Workspace (Journal & Screenshot Uploader) -->
     <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div class="space-y-6">
-            <div class="glass-card p-5 rounded-2xl border-t-2 border-amber-500">
-                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-chart-pie text-amber-500"></i> Multi-Timeframe Key Levels
-                </h3>
-                <div class="space-y-3 text-xs">
-                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
-                        <span class="text-amber-400 font-bold block mb-1">1. Weekly Key Levels (HTF):</span>
-                        <p class="text-slate-300">Identify Weekly Support/Resistance, Weekly Order Blocks, and Major Liquidity Pools.</p>
-                    </div>
-                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
-                        <span class="text-blue-400 font-bold block mb-1">2. Daily Key Levels (MTF):</span>
-                        <p class="text-slate-300">Mark Daily Order Blocks, Daily Supply/Demand Zones, and structural Break of Structure (BOS).</p>
-                    </div>
-                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
-                        <span class="text-emerald-400 font-bold block mb-1">3. 4H Bias & Direction:</span>
-                        <p class="text-slate-300">Confirm primary market trend and direction on the 4-Hour timeframe.</p>
-                    </div>
-                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
-                        <span class="text-rose-400 font-bold block mb-1">4. 15M Entry Execution:</span>
-                        <p class="text-slate-300">Wait for 15M CHoCH, Liquidity Sweep, and mitigation at 15M FVG or Order Block.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-card p-5 rounded-2xl border-l-2 border-rose-500">
-                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-shield-cat text-rose-500"></i> Strict Execution Rules
-                </h3>
-                <ul class="space-y-2 text-xs text-slate-300 list-disc list-inside">
-                    <li><strong class="text-white">Risk Per Trade:</strong> Strict <span class="text-rose-400 font-bold">1% Max</span> per trade.</li>
-                    <li><strong class="text-white">Risk to Reward:</strong> <span class="text-amber-400 font-bold">1:4</span> Minimum Target Ratio.</li>
-                    <li><strong class="text-white">Allowed Sessions:</strong> London & New York Sessions Only.</li>
-                    <li><strong class="text-white">Daily Limit:</strong> Maximum <span class="text-amber-400 font-bold">2 Trades</span> per day.</li>
-                </ul>
-            </div>
-
-            <div class="glass-card p-5 rounded-2xl">
-                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-amber-500"></i> Pre-Trade A+ Checklist
-                </h3>
-                <div class="space-y-2 text-xs">
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
-                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>Weekly & Daily Key Levels Identified</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
-                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>4H Bias Confirmed with Market Structure</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
-                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>London or New York Session Active</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
-                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>15M CHoCH + FVG Mitigation Triggered</span>
-                    </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
-                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>Risk 1% & RR 1:4 Ratio Validated</span>
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <div class="lg:col-span-2 space-y-6">
+        <div class="lg:col-span-3 space-y-6">
             <div class="glass-card p-5 rounded-2xl border border-amber-500/20">
                 <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square text-amber-500"></i> Trade Journal & Screenshot Upload
@@ -393,17 +428,17 @@
         document.addEventListener('cut', event => event.preventDefault());
         document.addEventListener('selectstart', event => event.preventDefault());
 
-        // 24/7 DYNAMIC WARM LAMP FLOATING ELEMENTS GENERATOR (Bulb, Candles, $, Charts)
+        // 24/7 DYNAMIC WARM LAMP FLOATING ELEMENTS GENERATOR
         function spawnForexElement() {
             const container = document.getElementById('floatingContainer');
             if (!container) return;
 
             const icons = [
-                '<i class="fa-solid fa-lightbulb text-yellow-300 text-xl"></i>', // Warm Lamp Bulb
-                '<i class="fa-solid fa-dollar-sign text-amber-400 text-xl"></i>', // Dollar
-                '<i class="fa-solid fa-chart-candlestick text-emerald-400 text-2xl"></i>', // Candlestick
-                '<i class="fa-solid fa-chart-line text-amber-400 text-2xl"></i>', // Studio Forex Chart
-                '<i class="fa-solid fa-coins text-yellow-500 text-xl"></i>', // Coins
+                '<i class="fa-solid fa-lightbulb text-yellow-300 text-xl"></i>',
+                '<i class="fa-solid fa-dollar-sign text-amber-400 text-xl"></i>',
+                '<i class="fa-solid fa-chart-candlestick text-emerald-400 text-2xl"></i>',
+                '<i class="fa-solid fa-chart-line text-amber-400 text-2xl"></i>',
+                '<i class="fa-solid fa-coins text-yellow-500 text-xl"></i>',
                 '<span class="font-mono text-yellow-300 font-black text-sm">💡</span>',
                 '<span class="font-mono text-amber-400 font-black text-sm">$</span>'
             ];
@@ -413,7 +448,7 @@
             el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             
             const randomX = Math.random() * window.innerWidth;
-            const duration = 9 + Math.random() * 8; // 9 to 17 seconds continuous float
+            const duration = 9 + Math.random() * 8;
             
             el.style.left = randomX + 'px';
             el.style.animationDuration = duration + 's';
@@ -425,7 +460,6 @@
             }, duration * 1000);
         }
 
-        // Spawn glowing elements 24/7 continuously without stopping
         setInterval(spawnForexElement, 600);
 
         // Sessions Engine
