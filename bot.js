@@ -6,7 +6,6 @@ const WEB_APP_URL = process.env.WEB_APP_URL || 'https://apex-trading-plan.onrend
 
 const bot = new Telegraf(TOKEN);
 
-// Telegram /start command setup
 bot.start((ctx) => {
     ctx.reply(
         `Welcome to Apex Forex Academy! 👑\n\nYour institutional SMC & Price Action Trading Plan is ready.\n\n• Risk: 1% Per Trade\n• Target: 1:4 RR\n• Max: 2 Trades / Day`,
@@ -16,25 +15,22 @@ bot.start((ctx) => {
     );
 });
 
-// Express server create gochuu (Render port binding error akka hin fidineef)
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.json());
 app.use(express.static('.'));
 
+// Set webhook route for Telegram
+app.use(bot.webhookCallback(`/webhook/${TOKEN}`));
+bot.telegram.setWebhook(`${WEB_APP_URL}/webhook/${TOKEN}`);
+
 app.get('/health', (req, res) => {
-    res.send('Apex Trading Plan Web Service & Bot is active!');
+    res.send('Apex Trading Plan Webhook Server is active!');
 });
 
 app.listen(PORT, () => {
-    console.log(`Web Service is running and listening on port ${PORT}`);
-});
-
-// Launch Telegram Bot (Long polling)
-bot.launch().then(() => {
-    console.log('Apex Trading Plan Telegram Bot is running successfully...');
-}).catch((err) => {
-    console.error('Error starting bot:', err);
+    console.log(`Webhook server is running and listening on port ${PORT}`);
 });
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
