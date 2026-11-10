@@ -3,160 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY TRADING PLAN - SMC & Price Action</title>
+    <title>MY TRADING PLAN - Institutional SMC & Price Action Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #07090e; color: #e2e8f0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .accent-gold { color: #f59e0b; }
-        .bg-gold { background-color: #f59e0b; }
+        body { background-color: #07090e; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-input { background: rgba(7, 9, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .glass-input:focus { border-color: #f59e0b; outline: none; }
+        .glow-gold { box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+        .session-live { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); }
+        .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(15, 23, 42, 0.4); opacity: 0.7; }
     </style>
 </head>
-<body class="min-h-screen p-4 md:p-6">
+<body class="min-h-screen p-3 md:p-6 pb-12">
 
-    <!-- Header & Market Status Timer -->
-    <header class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 mb-6">
-        <div class="lg:col-span-2 glass-card p-5 rounded-2xl border-l-4 border-amber-500 flex flex-col justify-between">
-            <div class="flex items-center gap-3">
-                <span class="bg-amber-500/20 text-amber-400 p-3 rounded-xl text-xl"><i class="fa-solid fa-compass-drafting"></i></span>
-                <div>
-                    <h1 class="text-2xl font-extrabold tracking-wide text-white">MY TRADING PLAN</h1>
-                    <p class="text-xs text-slate-400">Strategy: SMC + Price Action | Multi-Timeframe Execution Blueprint</p>
-                </div>
+    <!-- Header Banner -->
+    <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-6 gap-4 glass-card p-6 rounded-2xl border-l-4 border-amber-500 glow-gold">
+        <div class="flex items-center gap-4">
+            <div class="bg-amber-500/20 text-amber-400 p-3.5 rounded-2xl text-2xl border border-amber-500/30">
+                <i class="fa-solid fa-crown"></i>
             </div>
-            <div class="flex flex-wrap gap-2 mt-4 text-xs">
-                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 text-amber-400 font-bold"><i class="fa-solid fa-crosshairs mr-1"></i> RR: 1:4 Target</span>
-                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 text-rose-400 font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Risk: 1% Per Trade</span>
-                <span class="bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-800 text-emerald-400"><i class="fa-solid fa-clock mr-1"></i> London & NY Sessions</span>
+            <div>
+                <h1 class="text-2xl md:text-3xl font-black tracking-wide text-white">MY TRADING PLAN</h1>
+                <p class="text-xs text-slate-400 mt-0.5">SMC + Price Action Institutional Dashboard | Apex Forex Strategy</p>
             </div>
         </div>
-
-        <!-- Market Countdown Timer Card -->
-        <div class="glass-card p-5 rounded-2xl flex flex-col justify-between border border-amber-500/20">
-            <div class="flex justify-between items-center">
-                <span class="text-xs text-slate-400 font-semibold uppercase tracking-wider"><i class="fa-solid fa-globe mr-1 text-amber-500"></i> Market Session Timer</span>
-                <span id="marketStatusBadge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">ACTIVE</span>
-            </div>
-            <div class="my-2">
-                <div id="activeSessionName" class="text-sm font-bold text-white">London Session Open</div>
-                <div id="countdownTimer" class="text-2xl font-black font-mono text-amber-400">00:00:00</div>
-            </div>
-            <div class="text-[10px] text-slate-400">Next session transition countdown (UTC)</div>
+        <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 text-rose-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-shield-halved"></i> Risk: 1% Max
+            </span>
+            <span class="bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 text-amber-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-crosshairs"></i> Target RR: 1:4
+            </span>
+            <span class="bg-slate-900 px-3.5 py-2 rounded-xl border border-slate-800 text-emerald-400 font-bold flex items-center gap-1.5">
+                <i class="fa-solid fa-layer-group"></i> HTF: Weekly / Daily / 4H
+            </span>
         </div>
     </header>
 
-    <!-- Main Container -->
-    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Left Panel: Strategy Rules & Execution Steps -->
-        <div class="space-y-6">
-            <!-- Core Strategy Card -->
-            <div class="glass-card p-5 rounded-2xl">
-                <h2 class="text-amber-400 text-xs font-bold mb-3 uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-chess-board"></i> SMC + Price Action Blueprint
-                </h2>
-                <ul class="space-y-3 text-xs text-slate-300">
-                    <li class="bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                        <strong class="text-white block mb-0.5">1. Higher Time Frame (4H) Bias:</strong>
-                        Direction gabaa (Trend), Key Support & Resistance, fi 4H Supply & Demand zones addaa baasuu.
-                    </li>
-                    <li class="bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                        <strong class="text-white block mb-0.5">2. Liquidity & Sweep:</strong>
-                        Price-iin 4H POI geessee liquidity fudhachuu isaa eeguu.
-                    </li>
-                    <li class="bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
-                        <strong class="text-white block mb-0.5">3. Lower Time Frame (15M) Entry:</strong>
-                        15M CHoCH (Change of Character) fi 15M Supply/Demand ykn FVG mitigation irratti entry fudhachuu.
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Risk Management Rules -->
-            <div class="glass-card p-5 rounded-2xl border-l-2 border-rose-500">
-                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
-                    <i class="fa-solid fa-shield-halved text-rose-500"></i> Strict Risk Rules
-                </h3>
-                <ul class="space-y-2 text-xs text-slate-300 list-disc list-inside">
-                    <li><strong class="text-white">Risk Per Trade:</strong> Strict <span class="text-rose-400 font-bold">1%</span> per trade.</li>
-                    <li><strong class="text-white">Risk to Reward:</strong> <span class="text-amber-400 font-bold">1:4</span> Target Ratio.</li>
-                    <li><strong class="text-white">Sessions:</strong> London & New York Sessions only.</li>
-                    <li><strong class="text-white">Daily Limit:</strong> Guyyaatti trade 1 qofa fudhachuu.</li>
-                </ul>
-            </div>
+    <!-- Global Sessions & Weekend Status Bar -->
+    <section class="max-w-7xl mx-auto mb-6">
+        <div class="flex items-center justify-between mb-3 px-1">
+            <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
+                <i class="fa-solid fa-globe text-amber-500"></i> Global Market Sessions & Countdown
+            </h2>
+            <span id="marketWeekendBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                MARKET OPEN
+            </span>
         </div>
 
-        <!-- Right Panel: Trade Logger & Checklists -->
-        <div class="lg:col-span-2 space-y-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Sydney / Asian Session -->
+            <div id="sessionCardAsian" class="glass-card p-4 rounded-xl border transition-all">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-sun text-yellow-400"></i> Asian / Tokyo
+                    </span>
+                    <span id="badgeAsian" class="text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">CLOSED</span>
+                </div>
+                <div class="text-xs text-slate-400 mb-1">00:00 - 09:00 UTC</div>
+                <div id="timerAsian" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
+            </div>
+
+            <!-- Tokyo Session -->
+            <div id="sessionCardTokyo" class="glass-card p-4 rounded-xl border transition-all">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-building-columns text-cyan-400"></i> Tokyo Peak
+                    </span>
+                    <span id="badgeTokyo" class="text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">CLOSED</span>
+                </div>
+                <div class="text-xs text-slate-400 mb-1">00:00 - 06:00 UTC</div>
+                <div id="timerTokyo" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
+            </div>
+
+            <!-- London Session -->
+            <div id="sessionCardLondon" class="glass-card p-4 rounded-xl border transition-all">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-landmark text-amber-400"></i> London Session
+                    </span>
+                    <span id="badgeLondon" class="text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">CLOSED</span>
+                </div>
+                <div class="text-xs text-slate-400 mb-1">08:00 - 16:30 UTC</div>
+                <div id="timerLondon" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
+            </div>
+
+            <!-- New York Session -->
+            <div id="sessionCardNY" class="glass-card p-4 rounded-xl border transition-all">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-city text-blue-400"></i> New York Session
+                    </span>
+                    <span id="badgeNY" class="text-[10px] font-extrabold px-2 py-0.5 rounded uppercase">CLOSED</span>
+                </div>
+                <div class="text-xs text-slate-400 mb-1">13:00 - 21:00 UTC</div>
+                <div id="timerNY" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Workspace -->
+    <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Left Panel: HTF Key Levels & Risk Rules -->
+        <div class="space-y-6">
             
-            <!-- A+ Setup Checklist -->
-            <div class="glass-card p-5 rounded-2xl border border-amber-500/20">
-                <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-list-check text-amber-500"></i> Seera Daldalaa (A+ Execution Checklist)
+            <!-- Key Levels Blueprint Card -->
+            <div class="glass-card p-5 rounded-2xl border-t-2 border-amber-500">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-pie text-amber-500"></i> Multi-Timeframe Key Levels
                 </h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
+                <div class="space-y-3 text-xs">
+                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
+                        <span class="text-amber-400 font-bold block mb-1">1. Weekly Key Levels (HTF):</span>
+                        <p class="text-slate-300">Weekly Support/Resistance, Weekly Order Blocks, High/Low Liquidity pools addaa baasuu.</p>
+                    </div>
+                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
+                        <span class="text-blue-400 font-bold block mb-1">2. Daily Key Levels (MTF):</span>
+                        <p class="text-slate-300">Daily Order Block, Daily Supply/Demand Zones, Break of Structure (BOS) hordofuu.</p>
+                    </div>
+                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
+                        <span class="text-emerald-400 font-bold block mb-1">3. 4H Bias & Direction:</span>
+                        <p class="text-slate-300">Structure 4H irratti trend gabaa (Bullish/Bearish) mirkaneessuu.</p>
+                    </div>
+                    <div class="bg-slate-900/70 p-3 rounded-xl border border-slate-800">
+                        <span class="text-rose-400 font-bold block mb-1">4. 15M Entry Execution:</span>
+                        <p class="text-slate-300">15M CHoCH, Liquidity Sweep, fi 15M FVG/Order Block Mitigation irratti Entry fudhachuu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Rules Card -->
+            <div class="glass-card p-5 rounded-2xl border-l-2 border-rose-500">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-shield-cat text-rose-500"></i> Strict Execution Rules
+                </h3>
+                <ul class="space-y-2 text-xs text-slate-300 list-disc list-inside">
+                    <li><strong class="text-white">Risk Per Trade:</strong> Strict <span class="text-rose-400 font-bold">1%</span> maximum per trade.</li>
+                    <li><strong class="text-white">Risk to Reward:</strong> <span class="text-amber-400 font-bold">1:4</span> Target Ratio.</li>
+                    <li><strong class="text-white">Allowed Sessions:</strong> London & New York Only.</li>
+                    <li><strong class="text-white">Trade Limit:</strong> Guyyaatti trade <span class="text-amber-400 font-bold">1 QOFA</span> fudhachuu.</li>
+                </ul>
+            </div>
+
+            <!-- Interactive Checklist -->
+            <div class="glass-card p-5 rounded-2xl">
+                <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-list-check text-amber-500"></i> Pre-Trade A+ Checklist
+                </h3>
+                <div class="space-y-2 text-xs">
+                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
                         <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>4H Market Direction / Bias Confirmed</span>
+                        <span>Weekly & Daily Key Levels Identified</span>
                     </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
+                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
                         <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>London / New York Session Active</span>
+                        <span>4H Bias Confirmed with Market Structure</span>
                     </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
+                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
                         <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>15M CHoCH & Supply/Demand POI Found</span>
+                        <span>London or New York Session Active</span>
                     </label>
-                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-3 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
+                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
                         <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
-                        <span>Risk 1% & RR 1:4 Ratio Confirmed</span>
+                        <span>15M CHoCH + FVG Mitigation Triggered</span>
+                    </label>
+                    <label class="flex items-center gap-2.5 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800 cursor-pointer hover:bg-slate-900">
+                        <input type="checkbox" class="accent-amber-500 w-4 h-4 rounded">
+                        <span>Risk 1% & RR 1:4 Ratio Validated</span>
                     </label>
                 </div>
             </div>
 
-            <!-- Trade Logger Form -->
-            <div class="glass-card p-5 rounded-2xl">
+        </div>
+
+        <!-- Right Panel: Trade Form with Screenshot Uploader & Journal -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Trade Logging Form -->
+            <div class="glass-card p-5 rounded-2xl border border-amber-500/20">
                 <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
-                    <i class="fa-solid fa-pen-to-square text-amber-500"></i> Galmee Daldalaa (Trade Journal & Auto-Save)
+                    <i class="fa-solid fa-pen-to-square text-amber-500"></i> Galmee Trade & Screenshot Fe'uu
                 </h3>
-                
-                <form id="tradeForm" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 mb-4">
-                    <select id="tradeSymbol" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
-                        <option value="XAUUSD">XAUUSD (Gold)</option>
-                        <option value="EURUSD">EURUSD</option>
-                        <option value="NASDAQ">NASDAQ</option>
-                        <option value="GBPUSD">GBPUSD</option>
-                        <option value="USDJPY">USDJPY</option>
-                    </select>
-                    <select id="tradeAction" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
-                        <option value="BUY">BUY (Long)</option>
-                        <option value="SELL">SELL (Short)</option>
-                    </select>
-                    <select id="tradeResult" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white">
-                        <option value="WIN">WIN (+1:4 RR)</option>
-                        <option value="LOSS">LOSS (-1% Risk)</option>
-                    </select>
-                    <input type="text" id="tradePnL" placeholder="Return / Note (+4% ykn -1%)" required class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white placeholder-slate-600">
-                    <button type="submit" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl p-2.5 text-xs transition flex items-center justify-center gap-1">
-                        <i class="fa-solid fa-floppy-disk"></i> Save Trade
+
+                <form id="tradeForm" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
+                        <div>
+                            <label class="text-[11px] text-slate-400 block mb-1">Symbol</label>
+                            <select id="tradeSymbol" class="w-full glass-input rounded-xl p-2.5 text-xs text-white">
+                                <option value="XAUUSD">XAUUSD (Gold)</option>
+                                <option value="EURUSD">EURUSD</option>
+                                <option value="NASDAQ">NASDAQ</option>
+                                <option value="GBPUSD">GBPUSD</option>
+                                <option value="USDJPY">USDJPY</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[11px] text-slate-400 block mb-1">Type</label>
+                            <select id="tradeAction" class="w-full glass-input rounded-xl p-2.5 text-xs text-white">
+                                <option value="BUY">BUY (Long)</option>
+                                <option value="SELL">SELL (Short)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[11px] text-slate-400 block mb-1">Result</label>
+                            <select id="tradeResult" class="w-full glass-input rounded-xl p-2.5 text-xs text-white">
+                                <option value="WIN">WIN (+1:4 RR)</option>
+                                <option value="LOSS">LOSS (-1% Risk)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-[11px] text-slate-400 block mb-1">Return / Note</label>
+                            <input type="text" id="tradePnL" placeholder="+4% ykn -1%" required class="w-full glass-input rounded-xl p-2.5 text-xs text-white">
+                        </div>
+                    </div>
+
+                    <!-- Screenshot File Attachment Input -->
+                    <div>
+                        <label class="text-[11px] text-slate-400 block mb-1">TradingView Chart Screenshot Fe'uu (Optional)</label>
+                        <div class="flex items-center gap-3">
+                            <input type="file" id="tradeImageInput" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                            <button type="button" onclick="document.getElementById('tradeImageInput').click()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+                                <i class="fa-solid fa-image text-amber-500"></i> Suura Chart Filadhu
+                            </button>
+                            <span id="fileNameDisplay" class="text-xs text-slate-500 italic">Suuraan hin filatamne</span>
+                        </div>
+                        <div id="imagePreviewContainer" class="mt-3 hidden">
+                            <img id="imagePreview" src="" alt="Chart Preview" class="h-24 rounded-lg border border-slate-700 object-cover">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl py-3 text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
+                        <i class="fa-solid fa-floppy-disk"></i> Trade & Screenshot Save Godhi
                     </button>
                 </form>
+            </div>
 
+            <!-- Trade History Table -->
+            <div class="glass-card p-5 rounded-2xl">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-amber-500"></i> Saved Journal & Screenshots
+                    </h3>
+                    <button onclick="clearAllTrades()" class="text-[11px] text-rose-400 hover:underline font-semibold">Clear All</button>
+                </div>
+                
                 <div class="overflow-x-auto">
                     <table class="w-full text-left border-collapse">
                         <thead>
                             <tr class="text-slate-400 text-xs border-b border-slate-800 pb-2">
-                                <th class="pb-3">GUYYAA / YEROO</th>
+                                <th class="pb-3">TIME</th>
                                 <th class="pb-3">SYMBOL</th>
                                 <th class="pb-3">ACTION</th>
                                 <th class="pb-3">RESULT</th>
-                                <th class="pb-3 text-right">RETURN (%) / NOTE</th>
+                                <th class="pb-3">RETURN</th>
+                                <th class="pb-3">CHART</th>
                                 <th class="pb-3 text-right">ACTION</th>
                             </tr>
                         </thead>
                         <tbody id="tradeTableBody" class="text-sm divide-y divide-slate-800/50">
                             <tr>
-                                <td colspan="6" class="text-center py-6 text-slate-500 text-xs">Ammaaf trade tokkoyyuu hin galmoofne.</td>
+                                <td colspan="7" class="text-center py-6 text-slate-500 text-xs">Ammaaf trade tokkoyyuu hin galmoofne.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -166,62 +275,123 @@
         </div>
     </main>
 
+    <!-- Screenshot Modal Viewer -->
+    <div id="imageModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4" onclick="closeModal()">
+        <div class="max-w-4xl max-h-[90vh] relative" onclick="event.stopPropagation()">
+            <button onclick="closeModal()" class="absolute -top-10 right-0 text-white text-xl hover:text-amber-400"><i class="fa-solid fa-xmark"></i> Close</button>
+            <img id="modalImage" src="" alt="Full Chart" class="max-w-full max-h-[85vh] rounded-xl border border-slate-700 shadow-2xl">
+        </div>
+    </div>
+
     <script>
-        // --- MARKET SESSION COUNTDOWN TIMER ---
-        function updateMarketTimer() {
+        // --- 1. GLOBAL MARKET SESSIONS & WEEKEND COUNTDOWN ENGINE ---
+        function updateSessionsEngine() {
             const now = new Date();
+            const utcDay = now.getUTCDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
             const utcHours = now.getUTCHours();
             const utcMinutes = now.getUTCMinutes();
             const utcSeconds = now.getUTCSeconds();
             const totalSecNow = utcHours * 3600 + utcMinutes * 60 + utcSeconds;
 
-            let targetSec = 21 * 3600; 
-            let sessionText = "New York Session Active";
-
-            if (totalSecNow >= 8 * 3600 && totalSecNow < 13 * 3600) {
-                sessionText = "London Session Active";
-                targetSec = 13 * 3600;
-            } else if (totalSecNow >= 13 * 3600 && totalSecNow < 21 * 3600) {
-                sessionText = "London + New York Overlap";
-                targetSec = 21 * 3600;
+            // Weekend Check (Market closes Friday 22:00 UTC, Opens Sunday 22:00 UTC)
+            const isWeekend = (utcDay === 6) || (utcDay === 5 && utcHours >= 22) || (utcDay === 0 && utcHours < 22);
+            
+            const badgeWeekend = document.getElementById('marketWeekendBadge');
+            if (isWeekend) {
+                badgeWeekend.innerText = "MARKET CLOSED (WEEKEND)";
+                badgeWeekend.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20";
             } else {
-                sessionText = "Asian Session / Market Quiet";
-                targetSec = 8 * 3600;
+                badgeWeekend.innerText = "MARKET OPEN";
+                badgeWeekend.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
             }
 
-            let diffSec = targetSec - totalSecNow;
-            if (diffSec < 0) diffSec += 24 * 3600;
+            // Sessions Ranges (in UTC seconds)
+            const sessions = [
+                { id: 'Asian', open: 0, close: 9 * 3600, card: 'sessionCardAsian', badge: 'badgeAsian', timer: 'timerAsian' },
+                { id: 'Tokyo', open: 0, close: 6 * 3600, card: 'sessionCardTokyo', badge: 'badgeTokyo', timer: 'timerTokyo' },
+                { id: 'London', open: 8 * 3600, close: 16.5 * 3600, card: 'sessionCardLondon', badge: 'badgeLondon', timer: 'timerLondon' },
+                { id: 'NY', open: 13 * 3600, close: 21 * 3600, card: 'sessionCardNY', badge: 'badgeNY', timer: 'timerNY' }
+            ];
 
-            const h = Math.floor(diffSec / 3600).toString().padStart(2, '0');
-            const m = Math.floor((diffSec % 3600) / 60).toString().padStart(2, '0');
-            const s = (diffSec % 60).toString().padStart(2, '0');
+            sessions.forEach(s => {
+                const isLive = !isWeekend && (totalSecNow >= s.open && totalSecNow < s.close);
+                const cardEl = document.getElementById(s.card);
+                const badgeEl = document.getElementById(s.badge);
+                const timerEl = document.getElementById(s.timer);
 
-            document.getElementById('activeSessionName').innerText = sessionText;
-            document.getElementById('countdownTimer').innerText = `${h}:${m}:${s}`;
+                if (isLive) {
+                    cardEl.className = "glass-card p-4 rounded-xl border session-live transition-all";
+                    badgeEl.innerText = "LIVE";
+                    badgeEl.className = "text-[10px] font-extrabold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 animate-pulse";
+                    
+                    // Countdown to Close
+                    let diffSec = s.close - totalSecNow;
+                    timerEl.innerText = formatTime(diffSec);
+                    timerEl.className = "text-xl font-mono font-black text-emerald-400";
+                } else {
+                    cardEl.className = "glass-card p-4 rounded-xl border session-closed transition-all";
+                    badgeEl.innerText = "CLOSED";
+                    badgeEl.className = "text-[10px] font-extrabold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20";
+                    
+                    // Countdown to Next Open
+                    let diffSec = s.open - totalSecNow;
+                    if (diffSec <= 0) diffSec += 24 * 3600;
+                    timerEl.innerText = formatTime(diffSec);
+                    timerEl.className = "text-xl font-mono font-black text-slate-400";
+                }
+            });
         }
-        setInterval(updateMarketTimer, 1000);
-        updateMarketTimer();
 
-        // --- TRADE JOURNAL & AUTO-SAVE (LOCAL STORAGE) ---
+        function formatTime(totalSec) {
+            const h = Math.floor(totalSec / 3600).toString().padStart(2, '0');
+            const m = Math.floor((totalSec % 3600) / 60).toString().padStart(2, '0');
+            const s = Math.floor(totalSec % 60).toString().padStart(2, '0');
+            return `${h}:${m}:${s}`;
+        }
+
+        setInterval(updateSessionsEngine, 1000);
+        updateSessionsEngine();
+
+        // --- 2. SCREENSHOT UPLOADER & LOCAL STORAGE SYSTEM ---
+        let currentUploadedImageBase64 = "";
+
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            document.getElementById('fileNameDisplay').innerText = file.name;
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                currentUploadedImageBase64 = event.target.result;
+                document.getElementById('imagePreview').src = currentUploadedImageBase64;
+                document.getElementById('imagePreviewContainer').classList.remove('hidden');
+            };
+            reader.readAsDataURL(file);
+        }
+
         const form = document.getElementById('tradeForm');
         const tbody = document.getElementById('tradeTableBody');
-        let trades = JSON.parse(localStorage.getItem('my_trading_plan_trades')) || [];
+        let trades = JSON.parse(localStorage.getItem('my_pro_trading_plan_trades')) || [];
 
         function renderTrades() {
             if (trades.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="6" class="text-center py-6 text-slate-500 text-xs">Ammaaf trade tokkoyyuu hin galmoofne.</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="7" class="text-center py-6 text-slate-500 text-xs">Ammaaf trade tokkoyyuu hin galmoofne.</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = trades.map((t, index) => {
                 const isWin = t.result === 'WIN';
+                const hasChart = t.image && t.image.length > 0;
                 return `
                     <tr class="hover:bg-slate-800/30 transition text-xs">
                         <td class="py-3 text-slate-400">${t.date}</td>
                         <td class="py-3 font-semibold text-white">${t.symbol}</td>
-                        <td class="py-3"><span class="px-2 py-0.5 rounded ${t.action === 'BUY' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'}">${t.action}</span></td>
+                        <td class="py-3"><span class="px-2 py-0.5 rounded ${t.action === 'BUY' ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'}">${t.action}</span></td>
                         <td class="py-3 font-bold ${isWin ? 'text-emerald-400' : 'text-rose-400'}">${t.result}</td>
-                        <td class="py-3 text-right font-mono ${isWin ? 'text-emerald-400 font-bold' : 'text-rose-400'}">${t.pnl}</td>
+                        <td class="py-3 font-mono ${isWin ? 'text-emerald-400 font-bold' : 'text-rose-400'}">${t.pnl}</td>
+                        <td class="py-3">
+                            ${hasChart ? `<button onclick="openModal('${index}')" class="text-amber-400 hover:text-amber-300 underline font-semibold flex items-center gap-1"><i class="fa-solid fa-image"></i> View</button>` : `<span class="text-slate-600">No Image</span>`}
+                        </td>
                         <td class="py-3 text-right"><button onclick="deleteTrade(${index})" class="text-slate-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 `;
@@ -238,16 +408,47 @@
             const now = new Date();
             const dateStr = now.toISOString().split('T')[0] + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-            trades.unshift({ date: dateStr, symbol, action, result, pnl });
-            localStorage.setItem('my_trading_plan_trades', JSON.stringify(trades));
+            trades.unshift({
+                date: dateStr,
+                symbol,
+                action,
+                result,
+                pnl,
+                image: currentUploadedImageBase64
+            });
+
+            localStorage.setItem('my_pro_trading_plan_trades', JSON.stringify(trades));
             renderTrades();
+
+            // Reset form
             form.reset();
+            currentUploadedImageBase64 = "";
+            document.getElementById('fileNameDisplay').innerText = "Suuraan hin filatamne";
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
         });
 
         function deleteTrade(index) {
             trades.splice(index, 1);
-            localStorage.setItem('my_trading_plan_trades', JSON.stringify(trades));
+            localStorage.setItem('my_pro_trading_plan_trades', JSON.stringify(trades));
             renderTrades();
+        }
+
+        function clearAllTrades() {
+            if (confirm("Galmee fi suuraalee hunda haquu feetaa?")) {
+                trades = [];
+                localStorage.removeItem('my_pro_trading_plan_trades');
+                renderTrades();
+            }
+        }
+
+        // Modal Functionality
+        function openModal(index) {
+            document.getElementById('modalImage').src = trades[index].image;
+            document.getElementById('imageModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.add('hidden');
         }
 
         renderTrades();
