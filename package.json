@@ -1,12 +1,12 @@
 {
   "name": "my-trading-plan",
   "version": "1.0.0",
-  "description": "SMC and Price Action Trading Plan Dashboard",
+  "description": "My Trading Plan - SMC and Price Action Dashboard",
   "main": "index.html",
   "scripts": {
     "start": "npx serve ."
   },
-  "keywords": ["forex", "trading-plan", "smc", "dashboard"],
-  "author": "Apex Forex",
-  "license": "MIT"
+  "dependencies": {
+    "serve": "^14.2.0"
+  }
 }
