@@ -1,11 +1,9 @@
 const { Telegraf, Markup } = require('telegraf');
 
-// BotFather token kee asitti galchi
 const TOKEN = process.env.BOT_TOKEN || '9050898568:AAHOzmw3K4dgqaQ9uTwi4rD7lZElhVgUJ_Y';
-const bot = new Telegraf(TOKEN);
+const WEB_APP_URL = process.env.WEB_APP_URL || 'https://apex-trading-plan.onrender.com';
 
-// URL Web App Render irratti host goote asitti kaa'i (Fakkeenyaaf: https://my-trading-plan.onrender.com)
-const WEB_APP_URL = process.env.WEB_APP_URL || 'https://my-trading-plan.onrender.com';
+const bot = new Telegraf(TOKEN);
 
 bot.start((ctx) => {
     ctx.reply(
@@ -16,9 +14,11 @@ bot.start((ctx) => {
     );
 });
 
-bot.launch();
-console.log('Apex Trading Plan Bot is running successfully...');
+bot.launch().then(() => {
+    console.log('Apex Trading Plan Telegram Bot is running successfully as a Background Worker...');
+}).catch((err) => {
+    console.error('Error starting bot:', err);
+});
 
-// Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
