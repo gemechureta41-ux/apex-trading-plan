@@ -1,12 +1,12 @@
 {
-  "name": "my-trading-plan",
+  "name": "apex-trading-bot",
   "version": "1.0.0",
-  "description": "My Trading Plan - SMC and Price Action Dashboard",
-  "main": "index.html",
+  "description": "Telegram Mini App Bot for Apex Trading Plan",
+  "main": "bot.js",
   "scripts": {
-    "start": "npx serve ."
+    "start": "node bot.js"
   },
   "dependencies": {
-    "serve": "^14.2.0"
+    "telegraf": "^4.12.2"
   }
 }
