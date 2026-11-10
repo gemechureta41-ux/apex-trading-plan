@@ -7,17 +7,73 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #07090e; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-        .glass-card { background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .glass-input { background: rgba(7, 9, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); }
+        body { background-color: #05070b; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; overflow-x: hidden; position: relative; }
+        
+        /* ACCENT LIGHTING & DYNAMIC BACKGROUND GLOW */
+        .ambient-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .light-beam {
+            position: absolute;
+            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(16, 185, 129, 0.08) 40%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: floatLight 12s infinite alternate ease-in-out;
+        }
+        .light-beam-1 { width: 500px; height: 500px; top: -10%; left: -10%; animation-duration: 15s; }
+        .light-beam-2 { width: 600px; height: 600px; bottom: -20%; right: -10%; background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%); animation-duration: 18s; }
+        .light-beam-3 { width: 400px; height: 400px; top: 40%; left: 30%; background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%); animation-duration: 10s; }
+
+        @keyframes floatLight {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(60px, 40px) scale(1.15); }
+            100% { transform: translate(-50px, 70px) scale(0.95); }
+        }
+
+        /* FLOATING FOREX ELEMENTS ($ / CANDLESTICKS / STUDIO ICONS) */
+        .forex-floating-element {
+            position: absolute;
+            color: rgba(245, 158, 11, 0.22);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 1;
+            animation: driftElement linear infinite;
+        }
+        @keyframes driftElement {
+            0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* GLASS CARD STYLING */
+        .glass-card { background: rgba(15, 23, 42, 0.82); backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; z-index: 2; }
+        .glass-input { background: rgba(7, 9, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 2; }
         .glass-input:focus { border-color: #f59e0b; outline: none; }
-        .glow-gold { box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+        .glow-gold { box-shadow: 0 0 25px rgba(245, 158, 11, 0.18); }
         .glow-red { box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); }
         .session-live { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); }
         .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(15, 23, 42, 0.4); opacity: 0.7; }
     </style>
 </head>
 <body class="min-h-screen p-3 md:p-6 pb-12">
+
+    <!-- AMBIENT LIGHTING BACKGROUND BEAMS -->
+    <div class="ambient-glow">
+        <div class="light-beam light-beam-1"></div>
+        <div class="light-beam light-beam-2"></div>
+        <div class="light-beam light-beam-3"></div>
+    </div>
+
+    <!-- DYNAMIC FLOATING FOREX ELEMENTS CONTAINER -->
+    <div id="floatingContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-1"></div>
 
     <!-- Header Banner -->
     <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-6 gap-4 glass-card p-6 rounded-2xl border-l-4 border-amber-500 glow-gold">
@@ -116,9 +172,7 @@
             </span>
         </div>
 
-        <!-- 3 Sessions Grid (Asian, London, New York) -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <!-- Asian / Sydney Session -->
             <div id="sessionCardAsian" class="glass-card p-4 rounded-xl border transition-all">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xs font-bold text-white flex items-center gap-1.5">
@@ -130,7 +184,6 @@
                 <div id="timerAsian" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
             </div>
 
-            <!-- London Session -->
             <div id="sessionCardLondon" class="glass-card p-4 rounded-xl border transition-all">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xs font-bold text-white flex items-center gap-1.5">
@@ -142,7 +195,6 @@
                 <div id="timerLondon" class="text-xl font-mono font-black text-slate-300">00:00:00</div>
             </div>
 
-            <!-- New York Session -->
             <div id="sessionCardNY" class="glass-card p-4 rounded-xl border transition-all">
                 <div class="flex justify-between items-center mb-2">
                     <span class="text-xs font-bold text-white flex items-center gap-1.5">
@@ -158,11 +210,7 @@
 
     <!-- Main Workspace -->
     <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Left Panel: HTF Key Levels & Risk Rules -->
         <div class="space-y-6">
-            
-            <!-- Key Levels Blueprint Card -->
             <div class="glass-card p-5 rounded-2xl border-t-2 border-amber-500">
                 <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
                     <i class="fa-solid fa-chart-pie text-amber-500"></i> Multi-Timeframe Key Levels
@@ -187,7 +235,6 @@
                 </div>
             </div>
 
-            <!-- Risk Rules Card -->
             <div class="glass-card p-5 rounded-2xl border-l-2 border-rose-500">
                 <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
                     <i class="fa-solid fa-shield-cat text-rose-500"></i> Strict Execution Rules
@@ -200,7 +247,6 @@
                 </ul>
             </div>
 
-            <!-- Interactive Checklist -->
             <div class="glass-card p-5 rounded-2xl">
                 <h3 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
                     <i class="fa-solid fa-list-check text-amber-500"></i> Pre-Trade A+ Checklist
@@ -228,13 +274,9 @@
                     </label>
                 </div>
             </div>
-
         </div>
 
-        <!-- Right Panel: Trade Form with Screenshot Uploader & Journal -->
         <div class="lg:col-span-2 space-y-6">
-            
-            <!-- Trade Logging Form -->
             <div class="glass-card p-5 rounded-2xl border border-amber-500/20">
                 <h3 class="text-sm font-bold text-white mb-4 flex items-center gap-2">
                     <i class="fa-solid fa-pen-to-square text-amber-500"></i> Trade Journal & Screenshot Upload
@@ -272,7 +314,6 @@
                         </div>
                     </div>
 
-                    <!-- Screenshot File Attachment Input -->
                     <div>
                         <label class="text-[11px] text-slate-400 block mb-1">Upload TradingView Chart Screenshot (Optional)</label>
                         <div class="flex items-center gap-3">
@@ -287,19 +328,18 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl py-3 text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10">
+                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl py-3 text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 cursor-pointer">
                         <i class="fa-solid fa-floppy-disk"></i> Save Trade & Screenshot
                     </button>
                 </form>
             </div>
 
-            <!-- Trade History Table -->
             <div class="glass-card p-5 rounded-2xl">
                 <div class="flex justify-between items-center mb-4">
                     <h3 class="text-sm font-bold text-white flex items-center gap-2">
                         <i class="fa-solid fa-clock-rotate-left text-amber-500"></i> Saved Trade History
                     </h3>
-                    <button onclick="clearAllTrades()" class="text-[11px] text-rose-400 hover:underline font-semibold">Clear All</button>
+                    <button onclick="clearAllTrades()" class="text-[11px] text-rose-400 hover:underline font-semibold cursor-pointer">Clear All</button>
                 </div>
                 
                 <div class="overflow-x-auto">
@@ -323,11 +363,9 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </main>
 
-    <!-- Screenshot Modal Viewer -->
     <div id="imageModal" class="fixed inset-0 bg-black/80 backdrop-blur-md hidden z-50 flex items-center justify-center p-4" onclick="closeModal()">
         <div class="max-w-4xl max-h-[90vh] relative" onclick="event.stopPropagation()">
             <button onclick="closeModal()" class="absolute -top-10 right-0 text-white text-xl hover:text-amber-400"><i class="fa-solid fa-xmark"></i> Close</button>
@@ -336,22 +374,55 @@
     </div>
 
     <script>
-        // --- DISABLE COPY & RIGHT-CLICK ---
+        // Anti-copy security
         document.addEventListener('contextmenu', event => event.preventDefault());
         document.addEventListener('copy', event => { event.preventDefault(); alert("Copying content is disabled."); });
         document.addEventListener('cut', event => event.preventDefault());
         document.addEventListener('selectstart', event => event.preventDefault());
 
-        // --- 1. GLOBAL MARKET SESSIONS & WEEKEND COUNTDOWN ENGINE ---
+        // DYNAMIC FOREX ELEMENTS GENERATOR ($ / candlesticks / studio icons)
+        function spawnForexElement() {
+            const container = document.getElementById('floatingContainer');
+            if (!container) return;
+
+            const icons = [
+                '<i class="fa-solid fa-dollar-sign text-amber-400 text-xl"></i>',
+                '<i class="fa-solid fa-chart-candlestick text-emerald-400 text-2xl"></i>',
+                '<i class="fa-solid fa-chart-line text-amber-500 text-2xl"></i>',
+                '<i class="fa-solid fa-coins text-yellow-500 text-xl"></i>',
+                '<span class="font-mono text-emerald-400 font-black text-sm">$</span>',
+                '<span class="font-mono text-amber-400 font-black text-sm">📈</span>'
+            ];
+
+            const el = document.createElement('div');
+            el.className = 'forex-floating-element';
+            el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+            
+            const randomX = Math.random() * window.innerWidth;
+            const duration = 8 + Math.random() * 7; // 8 to 15 seconds float duration
+            
+            el.style.left = randomX + 'px';
+            el.style.animationDuration = duration + 's';
+
+            container.appendChild(el);
+
+            setTimeout(() => {
+                el.remove();
+            }, duration * 1000);
+        }
+
+        // Spawn elements continuously 24/7 without stopping
+        setInterval(spawnForexElement, 700);
+
+        // Sessions Engine
         function updateSessionsEngine() {
             const now = new Date();
-            const utcDay = now.getUTCDay(); // 0 = Sunday, 5 = Friday, 6 = Saturday
+            const utcDay = now.getUTCDay();
             const utcHours = now.getUTCHours();
             const utcMinutes = now.getUTCMinutes();
             const utcSeconds = now.getUTCSeconds();
             const totalSecNow = utcHours * 3600 + utcMinutes * 60 + utcSeconds;
 
-            // Weekend Check (Market closes Friday 22:00 UTC, Opens Sunday 22:00 UTC)
             const isWeekend = (utcDay === 6) || (utcDay === 5 && utcHours >= 22) || (utcDay === 0 && utcHours < 22);
             
             const badgeWeekend = document.getElementById('marketWeekendBadge');
@@ -363,7 +434,6 @@
                 badgeWeekend.className = "text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20";
             }
 
-            // Sessions Ranges (in UTC seconds) - Asian, London, New York
             const sessions = [
                 { id: 'Asian', open: 0, close: 9 * 3600, card: 'sessionCardAsian', badge: 'badgeAsian', timer: 'timerAsian' },
                 { id: 'London', open: 8 * 3600, close: 16.5 * 3600, card: 'sessionCardLondon', badge: 'badgeLondon', timer: 'timerLondon' },
@@ -407,7 +477,6 @@
         setInterval(updateSessionsEngine, 1000);
         updateSessionsEngine();
 
-        // --- 2. SCREENSHOT UPLOADER & LOCAL STORAGE SYSTEM ---
         let currentUploadedImageBase64 = "";
 
         function handleImageUpload(e) {
@@ -445,9 +514,9 @@
                         <td class="py-3 font-bold ${isWin ? 'text-emerald-400' : 'text-rose-400'}">${t.result}</td>
                         <td class="py-3 font-mono ${isWin ? 'text-emerald-400 font-bold' : 'text-rose-400'}">${t.pnl}</td>
                         <td class="py-3">
-                            ${hasChart ? `<button onclick="openModal('${index}')" class="text-amber-400 hover:text-amber-300 underline font-semibold flex items-center gap-1"><i class="fa-solid fa-image"></i> View</button>` : `<span class="text-slate-600">No Image</span>`}
+                            ${hasChart ? `<button onclick="openModal('${index}')" class="text-amber-400 hover:text-amber-300 underline font-semibold flex items-center gap-1 cursor-pointer"><i class="fa-solid fa-image"></i> View</button>` : `<span class="text-slate-600">No Image</span>`}
                         </td>
-                        <td class="py-3 text-right"><button onclick="deleteTrade(${index})" class="text-slate-500 hover:text-rose-400"><i class="fa-solid fa-trash"></i></button></td>
+                        <td class="py-3 text-right"><button onclick="deleteTrade(${index})" class="text-slate-500 hover:text-rose-400 cursor-pointer"><i class="fa-solid fa-trash"></i></button></td>
                     </tr>
                 `;
             }).join('');
@@ -475,7 +544,6 @@
             localStorage.setItem('my_pro_english_plan_trades', JSON.stringify(trades));
             renderTrades();
 
-            // Reset form
             form.reset();
             currentUploadedImageBase64 = "";
             document.getElementById('fileNameDisplay').innerText = "No image selected";
