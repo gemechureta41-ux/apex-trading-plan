@@ -12,6 +12,7 @@
         .glass-input { background: rgba(7, 9, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); }
         .glass-input:focus { border-color: #f59e0b; outline: none; }
         .glow-gold { box-shadow: 0 0 20px rgba(245, 158, 11, 0.15); }
+        .glow-red { box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); }
         .session-live { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); }
         .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(15, 23, 42, 0.4); opacity: 0.7; }
     </style>
@@ -41,6 +42,68 @@
             </span>
         </div>
     </header>
+
+    <!-- CRITICAL WARNING & NON-NEGOTIABLE RULES SECTION -->
+    <section class="max-w-7xl mx-auto mb-6">
+        <div class="glass-card p-5 rounded-2xl border-2 border-rose-500/60 bg-gradient-to-r from-rose-950/40 via-slate-900/80 to-slate-900/80 glow-red relative overflow-hidden">
+            <div class="absolute -right-8 -top-8 text-rose-500/10 text-9xl pointer-events-none">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="flex items-center gap-3 mb-3 border-b border-rose-500/30 pb-3">
+                <span class="bg-rose-500/20 text-rose-400 p-2.5 rounded-xl text-lg animate-pulse border border-rose-500/40">
+                    <i class="fa-solid fa-radiation"></i>
+                </span>
+                <div>
+                    <h2 class="text-base font-black tracking-wider text-rose-400 uppercase flex items-center gap-2">
+                        STRICT WARNING & NON-NEGOTIABLE RULES
+                    </h2>
+                    <p class="text-[11px] text-slate-400">Violating any of these rules will result in instant account liquidation or heavy drawdowns. Discipline is mandatory.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs mt-4">
+                <div class="bg-slate-950/80 p-3 rounded-xl border border-rose-500/30 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-rose-400 font-extrabold mb-1">
+                        <i class="fa-solid fa-ban"></i> RULE 1
+                    </div>
+                    <div class="text-white font-bold mb-1">STRICT 1% MAX RISK</div>
+                    <p class="text-[11px] text-slate-400">Never risk more than 1% per setup. Over-leveraging is account suicide.</p>
+                </div>
+
+                <div class="bg-slate-950/80 p-3 rounded-xl border border-amber-500/30 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-amber-400 font-extrabold mb-1">
+                        <i class="fa-solid fa-bullseye"></i> RULE 2
+                    </div>
+                    <div class="text-white font-bold mb-1">MINIMUM 1:4 RR</div>
+                    <p class="text-[11px] text-slate-400">Do not enter setups below 1:4 RR. Low reward ratios destroy mathematical expectancy.</p>
+                </div>
+
+                <div class="bg-slate-950/80 p-3 rounded-xl border border-rose-500/30 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-rose-400 font-extrabold mb-1">
+                        <i class="fa-solid fa-hand"></i> RULE 3
+                    </div>
+                    <div class="text-white font-bold mb-1">MAX 1 TRADE / DAY</div>
+                    <p class="text-[11px] text-slate-400">Strictly 1 trade per day. Revenge trading after a loss is strictly forbidden.</p>
+                </div>
+
+                <div class="bg-slate-950/80 p-3 rounded-xl border border-cyan-500/30 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-cyan-400 font-extrabold mb-1">
+                        <i class="fa-solid fa-clock"></i> RULE 4
+                    </div>
+                    <div class="text-white font-bold mb-1">LONDON & NY ONLY</div>
+                    <p class="text-[11px] text-slate-400">No trading during low-volume Asian hours or market closes. Trade high-volume sessions only.</p>
+                </div>
+
+                <div class="bg-slate-950/80 p-3 rounded-xl border border-emerald-500/30 flex flex-col justify-between">
+                    <div class="flex items-center gap-2 text-emerald-400 font-extrabold mb-1">
+                        <i class="fa-solid fa-check-double"></i> RULE 5
+                    </div>
+                    <div class="text-white font-bold mb-1">15M CHoCH MANDATORY</div>
+                    <p class="text-[11px] text-slate-400">Never enter blind limit orders. Always wait for 15M Liquidity Sweep & CHoCH confirmation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Global Sessions & Weekend Status Bar -->
     <section class="max-w-7xl mx-auto mb-6">
