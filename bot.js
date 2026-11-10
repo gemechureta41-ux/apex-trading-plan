@@ -6,29 +6,22 @@ const WEB_APP_URL = process.env.WEB_APP_URL || 'https://apex-trading-plan.onrend
 
 const bot = new Telegraf(TOKEN);
 
-// Professional & Elite Execution Command
+// Professional & Elite Execution Command with Rich Emojis
 bot.start((ctx) => {
     ctx.reply(
-        `👑 *APEX FOREX ACADEMY — INSTITUTIONAL TERMINAL*\n\n` +
-        `Access granted. Your advanced SMC & Price Action command center is fully synchronized.\n\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━\n` +
-        `🛡️ *EXECUTION PROTOCOLS & DISCIPLINE*\n` +
-        `• *Risk Allocation:* Strict 1% Max / Trade\n` +
-        `• *Reward Target:* Minimum 1:4 RR\n` +
-        `• *Daily Limit:* Maximum 2 Trades\n` +
-        `• *Active Sessions:* London & New York Only\n` +
-        `━━━━━━━━━━━━━━━━━━━━━━\n\n` +
-        `Tap the secure button below to initialize your dashboard, review HTF key levels, and execute your trading plan.`,
+        `💎 *APEX FOREX ACADEMY — INSTITUTIONAL TERMINAL* ⚡\n\n` +
+        `Welcome to your elite SMC & Price Action command center. All systems are fully synchronized and secure. 🛡️📈\n\n` +
+        `Click the button below to open your forex trading plan and execute with absolute discipline. 🔥🎯`,
         {
             parse_mode: 'Markdown',
             ...Markup.inlineKeyboard([
-                [Markup.button.webApp('🚀 INITIALIZE DASHBOARD', WEB_APP_URL)]
+                [Markup.button.webApp('🚀 LAUNCH TRADING PLAN ✨', WEB_APP_URL)]
             ])
         }
     );
 });
 
-// Express server create gochuu (Render Web Service & Webhook configuration)
+// Express server configuration (Render Web Service & Webhook)
 const app = express();
 const PORT = process.env.PORT || 3000;
 
