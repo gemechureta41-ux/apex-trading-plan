@@ -7,9 +7,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #05070b; color: #e2e8f0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; overflow-x: hidden; position: relative; }
+        body { 
+            background-color: #040609; 
+            color: #e2e8f0; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            -webkit-user-select: none; 
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            user-select: none; 
+            overflow-x: hidden; 
+            position: relative; 
+        }
         
-        /* ACCENT LIGHTING & DYNAMIC BACKGROUND GLOW */
+        /* WARM AMBER DESK LAMP & BULB ACCENT LIGHTING EFFECT (24/7 FLOW) */
         .ambient-glow {
             position: fixed;
             top: 0;
@@ -22,67 +32,70 @@
         }
         .light-beam {
             position: absolute;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.15) 0%, rgba(16, 185, 129, 0.08) 40%, transparent 70%);
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.22) 0%, rgba(245, 158, 11, 0.12) 35%, rgba(217, 119, 6, 0.04) 60%, transparent 80%);
             border-radius: 50%;
-            filter: blur(60px);
-            animation: floatLight 12s infinite alternate ease-in-out;
+            filter: blur(50px);
+            animation: pulseLamp 8s infinite alternate ease-in-out;
         }
-        .light-beam-1 { width: 500px; height: 500px; top: -10%; left: -10%; animation-duration: 15s; }
-        .light-beam-2 { width: 600px; height: 600px; bottom: -20%; right: -10%; background: radial-gradient(circle, rgba(59, 130, 246, 0.12) 0%, rgba(245, 158, 11, 0.08) 50%, transparent 70%); animation-duration: 18s; }
-        .light-beam-3 { width: 400px; height: 400px; top: 40%; left: 30%; background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 60%); animation-duration: 10s; }
+        .light-lamp-1 { width: 550px; height: 550px; top: -15%; left: -10%; animation-duration: 10s; }
+        .light-lamp-2 { width: 650px; height: 650px; bottom: -20%; right: -10%; background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, rgba(180, 83, 9, 0.1) 40%, transparent 75%); animation-duration: 14s; }
+        .light-lamp-3 { width: 450px; height: 450px; top: 35%; left: 35%; background: radial-gradient(circle, rgba(252, 211, 77, 0.15) 0%, transparent 65%); animation-duration: 12s; }
 
-        @keyframes floatLight {
-            0% { transform: translate(0px, 0px) scale(1); }
-            50% { transform: translate(60px, 40px) scale(1.15); }
-            100% { transform: translate(-50px, 70px) scale(0.95); }
+        @keyframes pulseLamp {
+            0% { transform: translate(0px, 0px) scale(1); opacity: 0.8; }
+            50% { transform: translate(40px, 50px) scale(1.18); opacity: 1; }
+            100% { transform: translate(-40px, 30px) scale(0.92); opacity: 0.7; }
         }
 
         /* FLOATING FOREX ELEMENTS ($ / CANDLESTICKS / STUDIO ICONS) */
         .forex-floating-element {
             position: absolute;
-            color: rgba(245, 158, 11, 0.22);
+            color: rgba(251, 191, 36, 0.35);
             font-weight: bold;
             pointer-events: none;
             z-index: 1;
             animation: driftElement linear infinite;
+            filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5));
         }
         @keyframes driftElement {
             0% { transform: translateY(105vh) rotate(0deg); opacity: 0; }
-            15% { opacity: 0.7; }
-            85% { opacity: 0.7; }
+            15% { opacity: 0.85; }
+            85% { opacity: 0.85; }
             100% { transform: translateY(-15vh) rotate(360deg); opacity: 0; }
         }
 
-        /* GLASS CARD STYLING */
-        .glass-card { background: rgba(15, 23, 42, 0.82); backdrop-filter: blur(18px); border: 1px solid rgba(255, 255, 255, 0.08); position: relative; z-index: 2; }
-        .glass-input { background: rgba(7, 9, 14, 0.9); border: 1px solid rgba(255, 255, 255, 0.1); position: relative; z-index: 2; }
-        .glass-input:focus { border-color: #f59e0b; outline: none; }
-        .glow-gold { box-shadow: 0 0 25px rgba(245, 158, 11, 0.18); }
+        /* GLASS CARD STYLING WITH WARM GOLD BORDER GLOW */
+        .glass-card { background: rgba(12, 17, 28, 0.85); backdrop-filter: blur(20px); border: 1px solid rgba(245, 158, 11, 0.15); position: relative; z-index: 2; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); }
+        .glass-input { background: rgba(5, 7, 12, 0.95); border: 1px solid rgba(255, 255, 255, 0.12); position: relative; z-index: 2; color: white; }
+        .glass-input:focus { border-color: #f59e0b; outline: none; box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+        .glow-gold { box-shadow: 0 0 30px rgba(245, 158, 11, 0.22); }
         .glow-red { box-shadow: 0 0 25px rgba(239, 68, 68, 0.25); }
-        .session-live { border-color: rgba(16, 185, 129, 0.4); background: rgba(16, 185, 129, 0.05); }
-        .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(15, 23, 42, 0.4); opacity: 0.7; }
+        .session-live { border-color: rgba(16, 185, 129, 0.5); background: rgba(16, 185, 129, 0.08); }
+        .session-closed { border-color: rgba(239, 68, 68, 0.2); background: rgba(12, 17, 28, 0.4); opacity: 0.7; }
     </style>
 </head>
 <body class="min-h-screen p-3 md:p-6 pb-12">
 
-    <!-- AMBIENT LIGHTING BACKGROUND BEAMS -->
+    <!-- AMBIENT WARM LAMP LIGHTING BEAMS -->
     <div class="ambient-glow">
-        <div class="light-beam light-beam-1"></div>
-        <div class="light-beam light-beam-2"></div>
-        <div class="light-beam light-beam-3"></div>
+        <div class="light-beam light-lamp-1"></div>
+        <div class="light-beam light-lamp-2"></div>
+        <div class="light-beam light-lamp-3"></div>
     </div>
 
-    <!-- DYNAMIC FLOATING FOREX ELEMENTS CONTAINER -->
+    <!-- DYNAMIC FLOATING FOREX ELEMENTS CONTAINER ($ / BULB / CANDLESTICK) -->
     <div id="floatingContainer" class="fixed inset-0 pointer-events-none overflow-hidden z-1"></div>
 
     <!-- Header Banner -->
     <header class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center mb-6 gap-4 glass-card p-6 rounded-2xl border-l-4 border-amber-500 glow-gold">
         <div class="flex items-center gap-4">
-            <div class="bg-amber-500/20 text-amber-400 p-3.5 rounded-2xl text-2xl border border-amber-500/30">
-                <i class="fa-solid fa-crown"></i>
+            <div class="bg-amber-500/20 text-amber-400 p-3.5 rounded-2xl text-2xl border border-amber-500/40 shadow-lg shadow-amber-500/20">
+                <i class="fa-solid fa-lightbulb animate-pulse text-yellow-300"></i>
             </div>
             <div>
-                <h1 class="text-2xl md:text-3xl font-black tracking-wide text-white">MY TRADING PLAN</h1>
+                <h1 class="text-2xl md:text-3xl font-black tracking-wide text-white flex items-center gap-2">
+                    MY TRADING PLAN <span class="text-xs bg-amber-500/20 text-amber-400 px-2.5 py-1 rounded-full border border-amber-500/30">INSTITUTIONAL WARM GLOW</span>
+                </h1>
                 <p class="text-xs text-slate-400 mt-0.5">SMC + Price Action Institutional Dashboard | Apex Forex Strategy</p>
             </div>
         </div>
@@ -99,7 +112,7 @@
         </div>
     </header>
 
-    <!-- CRITICAL WARNING & NON-NEGOTIABLE RULES SECTION -->
+    <!-- STRICT WARNING & NON-NEGOTIABLE RULES SECTION -->
     <section class="max-w-7xl mx-auto mb-6">
         <div class="glass-card p-5 rounded-2xl border-2 border-rose-500/60 bg-gradient-to-r from-rose-950/40 via-slate-900/80 to-slate-900/80 glow-red relative overflow-hidden">
             <div class="absolute -right-8 -top-8 text-rose-500/10 text-9xl pointer-events-none">
@@ -161,7 +174,7 @@
         </div>
     </section>
 
-    <!-- Global Sessions & Weekend Status Bar -->
+    <!-- Global Sessions & Countdown Bar -->
     <section class="max-w-7xl mx-auto mb-6">
         <div class="flex items-center justify-between mb-3 px-1">
             <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-2">
@@ -318,7 +331,7 @@
                         <label class="text-[11px] text-slate-400 block mb-1">Upload TradingView Chart Screenshot (Optional)</label>
                         <div class="flex items-center gap-3">
                             <input type="file" id="tradeImageInput" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
-                            <button type="button" onclick="document.getElementById('tradeImageInput').click()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition">
+                            <button type="button" onclick="document.getElementById('tradeImageInput').click()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition cursor-pointer">
                                 <i class="fa-solid fa-image text-amber-500"></i> Select Chart Image
                             </button>
                             <span id="fileNameDisplay" class="text-xs text-slate-500 italic">No image selected</span>
@@ -328,7 +341,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl py-3 text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/10 cursor-pointer">
+                    <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold rounded-xl py-3 text-xs transition flex items-center justify-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer">
                         <i class="fa-solid fa-floppy-disk"></i> Save Trade & Screenshot
                     </button>
                 </form>
@@ -380,18 +393,19 @@
         document.addEventListener('cut', event => event.preventDefault());
         document.addEventListener('selectstart', event => event.preventDefault());
 
-        // DYNAMIC FOREX ELEMENTS GENERATOR ($ / candlesticks / studio icons)
+        // 24/7 DYNAMIC WARM LAMP FLOATING ELEMENTS GENERATOR (Bulb, Candles, $, Charts)
         function spawnForexElement() {
             const container = document.getElementById('floatingContainer');
             if (!container) return;
 
             const icons = [
-                '<i class="fa-solid fa-dollar-sign text-amber-400 text-xl"></i>',
-                '<i class="fa-solid fa-chart-candlestick text-emerald-400 text-2xl"></i>',
-                '<i class="fa-solid fa-chart-line text-amber-500 text-2xl"></i>',
-                '<i class="fa-solid fa-coins text-yellow-500 text-xl"></i>',
-                '<span class="font-mono text-emerald-400 font-black text-sm">$</span>',
-                '<span class="font-mono text-amber-400 font-black text-sm">📈</span>'
+                '<i class="fa-solid fa-lightbulb text-yellow-300 text-xl"></i>', // Warm Lamp Bulb
+                '<i class="fa-solid fa-dollar-sign text-amber-400 text-xl"></i>', // Dollar
+                '<i class="fa-solid fa-chart-candlestick text-emerald-400 text-2xl"></i>', // Candlestick
+                '<i class="fa-solid fa-chart-line text-amber-400 text-2xl"></i>', // Studio Forex Chart
+                '<i class="fa-solid fa-coins text-yellow-500 text-xl"></i>', // Coins
+                '<span class="font-mono text-yellow-300 font-black text-sm">💡</span>',
+                '<span class="font-mono text-amber-400 font-black text-sm">$</span>'
             ];
 
             const el = document.createElement('div');
@@ -399,7 +413,7 @@
             el.innerHTML = icons[Math.floor(Math.random() * icons.length)];
             
             const randomX = Math.random() * window.innerWidth;
-            const duration = 8 + Math.random() * 7; // 8 to 15 seconds float duration
+            const duration = 9 + Math.random() * 8; // 9 to 17 seconds continuous float
             
             el.style.left = randomX + 'px';
             el.style.animationDuration = duration + 's';
@@ -411,8 +425,8 @@
             }, duration * 1000);
         }
 
-        // Spawn elements continuously 24/7 without stopping
-        setInterval(spawnForexElement, 700);
+        // Spawn glowing elements 24/7 continuously without stopping
+        setInterval(spawnForexElement, 600);
 
         // Sessions Engine
         function updateSessionsEngine() {
